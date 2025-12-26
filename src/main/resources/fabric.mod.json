@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "showmethemcontext",
+  "version": "${version}",
+  "name": "showmethemcontext",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "infinitygames"
+  ],
+  "license": "CC0-1.0",
+  "environment": "client",
+
+
+  "mixins": [
+    {
+      "config": "showmethemcontext.mixins.json",
+      "environment": "client"
+    }
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.18.3",
+    "minecraft": "~26.1-alpha.1",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
