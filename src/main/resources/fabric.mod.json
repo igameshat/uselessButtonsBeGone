@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "showmethemcontext",
-  "version": "${version}",
+  "version": "0.0.6_26.1-snapshot-1",
   "name": "showmethemcontext",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "a simple mod that remove every useless button minecraft has",
   "authors": [
     "infinitygames"
   ],
@@ -21,7 +21,6 @@
   "depends": {
     "fabricloader": ">=0.18.3",
     "minecraft": "~26.1-alpha.1",
-    "java": ">=25",
-    "fabric-api": "*"
+    "java": ">=25"
   }
 }
