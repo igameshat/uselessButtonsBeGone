@@ -33,7 +33,7 @@ dependencies {
 	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Modmenu support
-	//implementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+	compileOnly ("com.terraformersmc:modmenu:${project.modmenu_version}")
 	
 }
 

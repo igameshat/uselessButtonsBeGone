@@ -1,19 +1,20 @@
 {
   "schemaVersion": 1,
-  "id": "showmethemcontext",
+  "id": "ubbg",
   "version": "0.0.6_26.1-snapshot-1",
-  "name": "showmethemcontext",
-  "description": "a simple mod that remove every useless button minecraft has",
+  "name": "UselessButtonsBeGone",
+  "description": "a simple mod that remove some useless button minecraft has",
   "authors": [
     "infinitygames"
   ],
   "license": "CC0-1.0",
   "environment": "client",
-
-
+  "entrypoints" : {
+    "modmenu" : ["com.swaphat.uselessButtonsBeGone.modMenuConfig"]
+  },
   "mixins": [
     {
-      "config": "showmethemcontext.mixins.json",
+      "config": "UselessButtonsBeGone.mixins.json",
       "environment": "client"
     }
   ],
