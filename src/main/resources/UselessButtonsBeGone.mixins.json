@@ -1,0 +1,17 @@
+{
+  "required" : false,
+  "package" : "com.swaphat.uselessButtonsBeGone.mixin",
+  "compatibilityLevel" : "JAVA_22",
+  "client" : [
+    "RemoveOptionsScreenButtonsMixin",
+    "RemoveEscScreenButtonsMixin",
+    "RemoveBeaconScreenButtonsMixin",
+    "Main"
+  ],
+  "injectors" : {
+    "defaultRequire" : 1
+  },
+  "overwrites" : {
+    "requireAnnotations" : true
+  }
+}
