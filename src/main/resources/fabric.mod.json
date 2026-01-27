@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "ubbg",
-  "version": "0.0.9_26.1-snapshot-4",
+  "version": "0.0.9_26.1-snapshot-5",
   "name": "UselessButtonsBeGone",
   "description": "a simple mod that remove some useless button minecraft has",
   "authors": [
@@ -21,7 +21,7 @@
 
   "depends": {
     "fabricloader": ">=0.18.4",
-    "minecraft": "~26.1-alpha.4",
+    "minecraft": "~26.1-alpha.5",
     "java": ">=25"
   }
 }
