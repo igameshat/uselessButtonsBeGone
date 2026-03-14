@@ -24,10 +24,6 @@ public class ConfigManager {
         MODMENU_LOADED = loaded;
     }
 
-    public static boolean isModMenuLoaded() {
-        return MODMENU_LOADED;
-    }
-
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static ConfigVeriableStorage config;
     private static File configFile;
