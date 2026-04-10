@@ -106,5 +106,5 @@ modrinth {
 		optional.version "modmenu", "${project.modmenu_version}" // Creates a new optional dependency on this specific version of Sodium
 	}
 	changelog =
-	"""${project.changelog}"""
+	"""bumped version to 26.1.2-rc-1"""
 }
