@@ -24,7 +24,7 @@ public class ConfigScreen extends Screen {
 
         // Exit button at bottom
         this.addRenderableWidget(
-                Button.builder(Component.literal("Exit and go back"), button -> this.minecraft.setScreen(parent))
+                Button.builder(Component.literal("Exit and go back"), button -> this.minecraft.setScreenAndShow(parent))
                         .bounds(0, this.height - 20, this.width, 20)
                         .build()
         );
@@ -55,7 +55,7 @@ public class ConfigScreen extends Screen {
                 Button.builder(buttonText, button -> {
                             setter.accept(!getter.getAsBoolean());
                             ConfigManager.saveConfig();
-                            this.minecraft.setScreen(new ConfigScreen(parent));
+                            this.minecraft.setScreenAndShow(new ConfigScreen(parent));
                         })
                         .bounds(0, y, this.width, 20)
                         .build()
