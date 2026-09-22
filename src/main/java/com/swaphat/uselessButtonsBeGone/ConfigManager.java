@@ -10,20 +10,6 @@ import java.io.IOException;
 
 public class ConfigManager {
 
-    // Check if ModMenu is loaded
-    public static final boolean MODMENU_LOADED;
-
-    static {
-        boolean loaded;
-        try {
-            Class.forName("com.terraformersmc.modmenu.ModMenu");
-            loaded = true;
-        } catch (ClassNotFoundException e) {
-            loaded = false;
-        }
-        MODMENU_LOADED = loaded;
-    }
-
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static ConfigVeriableStorage config;
     private static File configFile;

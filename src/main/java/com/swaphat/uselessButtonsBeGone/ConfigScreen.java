@@ -1,10 +1,11 @@
 package com.swaphat.uselessButtonsBeGone;
 
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.CycleButton;
+import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 
 public class ConfigScreen extends Screen {
 
@@ -12,53 +13,52 @@ public class ConfigScreen extends Screen {
     private final ConfigManager.ConfigVeriableStorage config;
 
     public ConfigScreen(Screen parent) {
-        super(Component.literal("Useless Buttons Be Gone"));
+        super(Component.literal("Useless Buttons Be Gone - Configuration"));
         this.parent = parent;
-        config = ConfigManager.getConfig();
+        this.config = ConfigManager.getConfig();
     }
 
     @Override
     protected void init() {
-        int padding = height / 5;
-        int paddingTotal = 0;
+        int buttonWidth = 310;
+        int buttonHeight = 20;
+        int spacing = 24;
+        int startX = (this.width - buttonWidth) / 2;
+        int currentY = 40;
 
-        // Exit button at bottom
+        int textWidth = this.font.width(this.title);
+        this.addRenderableWidget(new StringWidget((this.width - textWidth) / 2, 15, textWidth, 9, this.title, this.font));
+
+        // Config Toggle Buttons
+        addToggleButton("Options: Telemetry Button", config::isRemoveOptionsScreenButtonTelemetry, config::setRemoveOptionsScreenButtonTelemetry, startX, currentY, buttonWidth, buttonHeight);
+        currentY += spacing;
+
+        addToggleButton("Options: Credits & Attributions Button", config::isRemoveOptionsScreenButtonCreditsAndAttributions, config::setRemoveOptionsScreenButtonCreditsAndAttributions, startX, currentY, buttonWidth, buttonHeight);
+        currentY += spacing;
+
+        addToggleButton("Pause: Give Feedback Button", config::isRemoveEscScreenButtonGiveFeedBack, config::setRemoveEscScreenButtonGiveFeedBack, startX, currentY, buttonWidth, buttonHeight);
+        currentY += spacing;
+
+        addToggleButton("Pause: Report Bugs Button", config::isRemoveEscScreenButtonReportBugs, config::setRemoveEscScreenButtonReportBugs, startX, currentY, buttonWidth, buttonHeight);
+        currentY += spacing;
+
+        addToggleButton("Beacon: Cancel (X) Button", config::isRemoveBeaconScreenButtonX, config::setRemoveBeaconScreenButtonX, startX, currentY, buttonWidth, buttonHeight);
+
+        // Exit/Done button at the bottom
         this.addRenderableWidget(
-                Button.builder(Component.literal("Exit and go back"), button -> this.minecraft.setScreenAndShow(parent))
-                        .bounds(0, this.height - 20, this.width, 20)
+                Button.builder(CommonComponents.GUI_DONE, button -> this.minecraft.setScreenAndShow(parent))
+                        .bounds((this.width - 200) / 2, this.height - 30, 200, 20)
                         .build()
         );
-
-        // Buttons for toggling config options
-        addToggleButton("Remove options screen telemetry button", config::isRemoveOptionsScreenButtonTelemetry, config::setRemoveOptionsScreenButtonTelemetry, paddingTotal);
-        paddingTotal += padding;
-        addToggleButton("Remove options screen credits and attributions button", config::isRemoveOptionsScreenButtonCreditsAndAttributions, config::setRemoveOptionsScreenButtonCreditsAndAttributions, paddingTotal);
-        paddingTotal += padding;
-        addToggleButton("Remove esc screen give feedback button", config::isRemoveEscScreenButtonGiveFeedBack, config::setRemoveEscScreenButtonGiveFeedBack, paddingTotal);
-        paddingTotal += padding;
-        addToggleButton("Remove esc screen report bugs button", config::isRemoveEscScreenButtonReportBugs, config::setRemoveEscScreenButtonReportBugs, paddingTotal);
-        paddingTotal += padding;
-        addToggleButton("Remove beacon screen X button", config::isRemoveBeaconScreenButtonX, config::setRemoveBeaconScreenButtonX, paddingTotal);
     }
 
-    private void addToggleButton(String label, java.util.function.BooleanSupplier getter, java.util.function.Consumer<Boolean> setter, int y) {
-        boolean isOn = getter.getAsBoolean();
-
-        Component statusText = Component.literal(isOn ? "On" : "Off")
-                .withStyle(Style.EMPTY.withColor(TextColor.fromRgb(isOn ? 0x00FF00 : 0xFF0000)));
-
-        Component buttonText = Component.empty()
-                .append(statusText)
-                .append(Component.literal(": " + label));
-
+    private void addToggleButton(String label, java.util.function.BooleanSupplier getter, java.util.function.Consumer<Boolean> setter, int x, int y, int width, int height) {
         this.addRenderableWidget(
-                Button.builder(buttonText, button -> {
-                            setter.accept(!getter.getAsBoolean());
+                CycleButton.onOffBuilder(getter.getAsBoolean())
+                        .create(x, y, width, height, Component.literal(label), (button, value) -> {
+                            setter.accept(value);
                             ConfigManager.saveConfig();
-                            this.minecraft.setScreenAndShow(new ConfigScreen(parent));
                         })
-                        .bounds(0, y, this.width, 20)
-                        .build()
         );
     }
 }
