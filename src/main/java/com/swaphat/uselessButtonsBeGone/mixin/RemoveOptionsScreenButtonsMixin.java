@@ -24,7 +24,7 @@ public class RemoveOptionsScreenButtonsMixin {
             return original.call(instance, message, screenToScreen);
         }
 
-        return new Button.Builder(Component.empty(), b -> {})
+        return new Button.Builder(Component.empty(), _ -> {})
                 .bounds(0, 0, 0, 0)
                 .build();
     }

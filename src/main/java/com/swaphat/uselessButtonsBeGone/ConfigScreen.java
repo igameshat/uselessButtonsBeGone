@@ -55,7 +55,7 @@ public class ConfigScreen extends Screen {
     private void addToggleButton(String label, java.util.function.BooleanSupplier getter, java.util.function.Consumer<Boolean> setter, int x, int y, int width, int height) {
         this.addRenderableWidget(
                 CycleButton.onOffBuilder(getter.getAsBoolean())
-                        .create(x, y, width, height, Component.literal(label), (button, value) -> {
+                        .create(x, y, width, height, Component.literal(label), (_, value) -> {
                             setter.accept(value);
                             ConfigManager.saveConfig();
                         })

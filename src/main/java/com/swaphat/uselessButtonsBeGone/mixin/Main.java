@@ -1,6 +1,5 @@
 package com.swaphat.uselessButtonsBeGone.mixin;
 
-import com.mojang.brigadier.CommandDispatcher;
 import com.swaphat.uselessButtonsBeGone.ConfigManager;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;

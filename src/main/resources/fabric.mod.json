@@ -7,7 +7,7 @@
   "authors": [
     "infinitygames"
   ],
-  "license": "CC0-1.0",
+  "license": "MIT",
   "environment": "client",
   "entrypoints" : {
     "modmenu" : ["com.swaphat.uselessButtonsBeGone.modMenuConfig"]
