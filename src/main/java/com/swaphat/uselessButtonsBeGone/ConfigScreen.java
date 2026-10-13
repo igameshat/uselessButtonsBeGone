@@ -44,6 +44,10 @@ public class ConfigScreen extends Screen {
 
         addToggleButton("Beacon: Cancel (X) Button", config::isRemoveBeaconScreenButtonX, config::setRemoveBeaconScreenButtonX, startX, currentY, buttonWidth, buttonHeight);
 
+        addToggleButton("Pause: Social Interactions", config::isRemoveEscScreenButtonSocialInteractions, config::setRemoveEscScreenButtonSocialInteractions, startX, currentY, buttonWidth, buttonHeight);
+
+        addToggleButton("Pause: Friends", config::isRemoveEscScreenButtonFriends, config::setRemoveEscScreenButtonFriends, startX, currentY, buttonWidth, buttonHeight);
+
         // Exit/Done button at the bottom
         this.addRenderableWidget(
                 Button.builder(CommonComponents.GUI_DONE, button -> this.minecraft.setScreenAndShow(parent))

@@ -20,7 +20,7 @@
   ],
 
   "depends": {
-    "minecraft": "~26.4-alpha.1",
+    "minecraft": "~26.4-alpha.4",
     "java": ">=25"
   }
 }

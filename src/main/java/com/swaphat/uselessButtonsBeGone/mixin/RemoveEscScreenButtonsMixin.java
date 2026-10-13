@@ -20,6 +20,36 @@ public abstract class RemoveEscScreenButtonsMixin {
                     ordinal = 0
             )
     )
+    private LayoutElement handleFriendsButton(LinearLayout instance, LayoutElement child) {
+        if (ConfigManager.getConfig().isRemoveEscScreenButtonFriends()) {
+            return child;
+        }
+        return instance.addChild(child);
+    }
+
+    @Redirect(
+            method = "createPauseMenu",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/layouts/LinearLayout;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
+                    ordinal = 1
+            )
+    )
+    private LayoutElement handleSocialInteractionsButton(LinearLayout instance, LayoutElement child) {
+        if (ConfigManager.getConfig().isRemoveEscScreenButtonSocialInteractions()) {
+            return child;
+        }
+        return instance.addChild(child);
+    }
+
+    @Redirect(
+            method = "createPauseMenu",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/layouts/LinearLayout;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
+                    ordinal = 2
+            )
+    )
     private LayoutElement handleReportBugsButton(LinearLayout instance, LayoutElement child) {
         if (ConfigManager.getConfig().isRemoveEscScreenButtonReportBugs()) {
             return child;
@@ -32,7 +62,7 @@ public abstract class RemoveEscScreenButtonsMixin {
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/layouts/LinearLayout;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
-                    ordinal = 1
+                    ordinal = 3
             )
     )
     private LayoutElement handleFeedbackButton(LinearLayout instance, LayoutElement child) {

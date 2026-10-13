@@ -50,25 +50,43 @@ public class ConfigManager {
 
     // Instance-based ConfigVeriableStorage class
     public static class ConfigVeriableStorage {
-        private boolean removeOptionsScreenButtonTelemetry = true;
-        private boolean removeOptionsScreenButtonCreditsAndAttributions = true;
-        private boolean removeEscScreenButtonGiveFeedBack = true;
-        private boolean removeEscScreenButtonReportBugs = true;
-        private boolean removeBeaconScreenButtonX = true;
+        private boolean OptionsScreenButtonTelemetry = true;
+        private boolean OptionsScreenButtonCreditsAndAttributions = true;
+        private boolean EscScreenButtonGiveFeedBack = true;
+        private boolean EscScreenButtonReportBugs = true;
+        private boolean BeaconScreenButtonX = true;
+        private boolean EscScreenButtonFriends = true;
+        private boolean EscScreenButtonSocialInteractions = true;
 
-        public boolean isRemoveOptionsScreenButtonTelemetry() { return removeOptionsScreenButtonTelemetry; }
-        public void setRemoveOptionsScreenButtonTelemetry(boolean val) { removeOptionsScreenButtonTelemetry = val; }
+        public boolean isRemoveOptionsScreenButtonTelemetry() { return OptionsScreenButtonTelemetry; }
+        public void setRemoveOptionsScreenButtonTelemetry(boolean val) { OptionsScreenButtonTelemetry = val; }
 
-        public boolean isRemoveOptionsScreenButtonCreditsAndAttributions() { return removeOptionsScreenButtonCreditsAndAttributions; }
-        public void setRemoveOptionsScreenButtonCreditsAndAttributions(boolean val) { removeOptionsScreenButtonCreditsAndAttributions = val; }
+        public boolean isRemoveOptionsScreenButtonCreditsAndAttributions() { return OptionsScreenButtonCreditsAndAttributions; }
+        public void setRemoveOptionsScreenButtonCreditsAndAttributions(boolean val) { OptionsScreenButtonCreditsAndAttributions = val; }
 
-        public boolean isRemoveEscScreenButtonGiveFeedBack() { return removeEscScreenButtonGiveFeedBack; }
-        public void setRemoveEscScreenButtonGiveFeedBack(boolean val) { removeEscScreenButtonGiveFeedBack = val; }
+        public boolean isRemoveEscScreenButtonGiveFeedBack() { return EscScreenButtonGiveFeedBack; }
+        public void setRemoveEscScreenButtonGiveFeedBack(boolean val) { EscScreenButtonGiveFeedBack = val; }
 
-        public boolean isRemoveEscScreenButtonReportBugs() { return removeEscScreenButtonReportBugs; }
-        public void setRemoveEscScreenButtonReportBugs(boolean val) { removeEscScreenButtonReportBugs = val; }
+        public boolean isRemoveEscScreenButtonReportBugs() { return EscScreenButtonReportBugs; }
+        public void setRemoveEscScreenButtonReportBugs(boolean val) { EscScreenButtonReportBugs = val; }
 
-        public boolean isRemoveBeaconScreenButtonX() { return removeBeaconScreenButtonX; }
-        public void setRemoveBeaconScreenButtonX(boolean val) { removeBeaconScreenButtonX = val; }
+        public boolean isRemoveBeaconScreenButtonX() { return BeaconScreenButtonX; }
+        public void setRemoveBeaconScreenButtonX(boolean val) { BeaconScreenButtonX = val; }
+
+        public boolean isRemoveEscScreenButtonSocialInteractions() {
+            return EscScreenButtonSocialInteractions;
+        }
+
+        public void setRemoveEscScreenButtonSocialInteractions(boolean EscScreenButtonSocialInteractions) {
+            this.EscScreenButtonSocialInteractions = EscScreenButtonSocialInteractions;
+        }
+
+        public boolean isRemoveEscScreenButtonFriends() {
+            return EscScreenButtonFriends;
+        }
+
+        public void setRemoveEscScreenButtonFriends(boolean EscScreenButtonFriends) {
+            this.EscScreenButtonFriends = EscScreenButtonFriends;
+        }
     }
 }

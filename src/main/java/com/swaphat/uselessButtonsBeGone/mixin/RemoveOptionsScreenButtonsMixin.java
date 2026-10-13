@@ -15,17 +15,17 @@ import java.util.function.Supplier;
 @Mixin(OptionsScreen.class)
 public class RemoveOptionsScreenButtonsMixin {
 
-    @WrapOperation(method = "init", at = @At(value = "INVOKE",target = "Lnet/minecraft/client/gui/screens/options/OptionsScreen;openScreenButton(Lnet/minecraft/network/chat/Component;Ljava/util/function/Supplier;)Lnet/minecraft/client/gui/components/Button;"))
+    @WrapOperation(method = "init",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/screens/options/OptionsScreen;openScreenButton(Lnet/minecraft/network/chat/Component;Ljava/util/function/Supplier;)Lnet/minecraft/client/gui/components/Button;"
+            )
+    )
     private Button removeCredits(OptionsScreen instance, Component message, Supplier<Screen> screenToScreen, Operation<Button> original) {
-        if ((Component.translatable("options.telemetry").toString().equals(message.toString()) && ConfigManager.getConfig().isRemoveOptionsScreenButtonTelemetry())
-
-                || (Component.translatable("options.credits_and_attribution").toString().equals(message.toString())) && ConfigManager.getConfig().isRemoveOptionsScreenButtonCreditsAndAttributions()) {
+        if ((Component.translatable("options.telemetry").toString().equals(message.toString()) && ConfigManager.getConfig().isRemoveOptionsScreenButtonTelemetry()) || (Component.translatable("options.credits_and_attribution").toString().equals(message.toString())) && ConfigManager.getConfig().isRemoveOptionsScreenButtonCreditsAndAttributions()) {
+            return Button.builder(Component.empty(),_->{}).bounds(0,0,0,0).build();
         } else {
             return original.call(instance, message, screenToScreen);
         }
-
-        return new Button.Builder(Component.empty(), _ -> {})
-                .bounds(0, 0, 0, 0)
-                .build();
     }
+
 }
